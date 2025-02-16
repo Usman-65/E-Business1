@@ -46,3 +46,21 @@ def impressum():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)  # Ändere den Port hier, falls 5000 blockiert ist
+
+@app.route('/beratung')
+def beratung():
+    return render_template('beratung.html')
+
+@app.route('/beratung-kontakt', methods=['POST'])
+def beratung_kontakt():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    message = request.form.get('message')
+
+    # Hier könnten die Daten gespeichert oder per E-Mail versendet werden
+    print(f"Neue Beratungsanfrage von {name} ({email}): {message}")
+
+    return redirect(url_for('beratung'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
