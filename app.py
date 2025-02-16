@@ -6,9 +6,31 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+if __name__ == '__main__':
+    app.run(debug=True)
+
 @app.route('/brainstorming')
 def brainstorming():
     return render_template('brainstorming.html')
+
+@app.route('/save-idea', methods=['POST'])
+def save_idea():
+    # Speichern der Idee aus dem Formular
+    idea = request.form.get('idea')
+    
+    if idea:
+        ideas.append(idea)  # Speichern der Idee in der Liste
+
+    # Umleitung zur Brainstorming-Seite
+    return redirect(url_for('brainstorming'))
+
+@app.route('/ideas')
+def show_ideas():
+    # Zeige alle gespeicherten Ideen an
+    return render_template('ideas.html', ideas=ideas)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 @app.route('/ueber-uns')
 def ueber_uns():

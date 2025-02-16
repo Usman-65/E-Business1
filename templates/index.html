@@ -3,58 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindMesh - Startseite</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Willkommen auf unserer Seite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Reset Margin and Padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Top 1/6 */
+        nav {
+            background: #333;
+            color: white;
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Slogan Section */
+        .slogan {
+            background: url('https://source.unsplash.com/1600x900/?business,technology') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .slogan h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .slogan p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Introduction Section */
+        .intro {
+            background-color: #f4f4f4;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 30px;
+            background-color: #e9ecef;
+        }
+
+        .service-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            width: 280px;
+            margin: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service-box p {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .service-box a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .service-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Willkommen bei MindMesh</h1>
-    <p>Die Brücke zwischen kreativen Konzepten und AI-gestützter Technologie.</p>
-</body>
-</html>
-    <header>
-        <h1>MindMesh</h1>
-        <nav>
-            <ul>
-                <li><a href="#start">Startseite</a></li>
-                <li><a href="#about">Über Uns</a></li>
-                <li><a href="#services">Leistungen</a></li>
-                <li><a href="#career">Karriere</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section id="start">
-        <h2>Willkommen bei MindMesh</h2>
-        <p>Die Brücke zwischen kreativen Konzepten und AI-gestützter Technologie – schnell, exakt und innovativ.</p>
-    </section>
-    
-    <section id="about">
-        <h2>Über Uns</h2>
-        <p>Gegründet von Usman Ahmad & Magnus Kietzig, helfen wir Unternehmen bei der schnellen, strukturierten und kreativen Konzeptentwicklung mit AI-Unterstützung.</p>
-    </section>
-    
-    <section id="services">
-        <h2>Unsere Leistungen</h2>
+
+    <!-- Navigation -->
+    <nav>
         <ul>
-            <li><strong>Einzelpersonen</strong>: Unterstützung beim Brainstorming neuer Ideen.</li>
-            <li><strong>Unternehmen</strong>: Effiziente Konzepterstellung durch AI.</li>
-            <li><strong>Kreativagenturen</strong>: Designvorschläge & AI-gestützte Inspiration.</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/brainstorming">Brainstorming</a></li>
+            <li><a href="/ueber-uns">Über uns</a></li>
+            <li><a href="/kontakt">Kontakt</a></li>
+            <li><a href="/impressum">Impressum</a></li>
         </ul>
+    </nav>
+
+    <!-- Slogan Section -->
+    <section class="slogan">
+        <div>
+            <h1>Die Zukunft deines Business beginnt hier</h1>
+            <p>Innovative Lösungen für Unternehmen von morgen – maßgeschneiderte Ideen und Strategien, die dein Wachstum beschleunigen.</p>
+        </div>
     </section>
-    
-    <section id="career">
-        <h2>Karriere</h2>
-        <p>Wir suchen kreative Köpfe! Bewirb dich jetzt.</p>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <h2>Willkommen bei uns</h2>
+        <p>Wir bieten kreative, innovative Lösungen, die dir helfen, dein Unternehmen auf das nächste Level zu bringen. Unsere Expertise erstreckt sich über verschiedene Geschäftsbereiche, in denen wir maßgeschneiderte Strategien und Lösungen anbieten.</p>
     </section>
-    
-    <section id="contact">
-        <h2>Kontakt</h2>
-        <p>Schreib uns an <a href="mailto:info@mindmesh.com">info@mindmesh.com</a></p>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="service-box">
+            <h3>Beratung</h3>
+            <p>Strategische Beratung für dein Business. Wir helfen dir, die richtigen Entscheidungen zu treffen.</p>
+            <a href="/beratung">Mehr erfahren</a>
+        </div>
+        <div class="service-box">
+            <h3>Marketing</h3>
+            <p>Wir entwickeln effektive Marketingstrategien, die deine Zielgruppe direkt ansprechen.</p>
+            <a href="/marketing">Mehr erfahren</a>
+        </div>
+        <div class="service-box">
+            <h3>Entwicklung</h3>
+            <p>Maßgeschneiderte Softwarelösungen, die dein Unternehmen digital voranbringen.</p>
+            <a href="/entwicklung">Mehr erfahren</a>
+        </div>
+        <div class="service-box">
+            <h3>Design</h3>
+            <p>Visuelle Gestaltung, die deine Marke stärkt und deine Kunden begeistert.</p>
+            <a href="/design">Mehr erfahren</a>
+        </div>
     </section>
-    
+
+    <!-- Footer -->
     <footer>
-        <p><a href="#privacy">Datenschutz</a> | <a href="#impressum">Impressum</a></p>
+        <p>© 2025 Deine Website | Alle Rechte vorbehalten</p>
     </footer>
+
 </body>
 </html>
