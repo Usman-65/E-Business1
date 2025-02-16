@@ -105,3 +105,10 @@ def beratung_kontakt():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/marketing')
+def marketing():
+     return render_template('marketing.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
