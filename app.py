@@ -1,6 +1,51 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+import sqlite3
 
 app = Flask(__name__)
+
+# Datenbank initialisieren
+def init_db():
+    with sqlite3.connect("brainstorming.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS ideas (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                text TEXT NOT NULL
+            )
+        """)
+        conn.commit()
+
+init_db()
+
+@app.route('/brainstorming', methods=['GET', 'POST'])
+def brainstorming():
+    if request.method == 'POST':
+        idea_text = request.form.get('idea')
+        if idea_text.strip():
+            with sqlite3.connect("brainstorming.db") as conn:
+                cursor = conn.cursor()
+                cursor.execute("INSERT INTO ideas (text) VALUES (?)", (idea_text,))
+                conn.commit()
+        return redirect(url_for('brainstorming'))
+
+    # Gespeicherte Ideen abrufen
+    with sqlite3.connect("brainstorming.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, text FROM ideas")
+        ideas = cursor.fetchall()
+
+    return render_template('brainstorming.html', ideas=ideas)
+
+@app.route('/delete/<int:idea_id>')
+def delete_idea(idea_id):
+    with sqlite3.connect("brainstorming.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM ideas WHERE id = ?", (idea_id,))
+        conn.commit()
+    return redirect(url_for('brainstorming'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 @app.route('/')
 def home():
@@ -8,10 +53,6 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-@app.route('/brainstorming')
-def brainstorming():
-    return render_template('brainstorming.html')
 
 @app.route('/save-idea', methods=['POST'])
 def save_idea():
