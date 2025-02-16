@@ -3,8 +3,24 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+def home():
     return render_template('index.html')
 
+@app.route('/brainstorming')
+def brainstorming():
+    return render_template('brainstorming.html')
+
+@app.route('/ueber-uns')
+def ueber_uns():
+    return render_template('ueber_uns.html')
+
+@app.route('/kontakt')
+def kontakt():
+    return render_template('kontakt.html')
+
+@app.route('/impressum')
+def impressum():
+    return render_template('impressum.html')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)  # Ändere den Port hier, falls 5000 blockiert ist
