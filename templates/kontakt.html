@@ -12,68 +12,54 @@
     <header>
         <h1>Kontakt</h1>
     </header>
+
     <main>
-        <p>Wir freuen uns, von Ihnen zu hören. Sie können uns über die folgenden Wege erreichen:</p>
-        <ul>
-            <li>Email: <a href="mailto:kontakt@easybuis.com">info@easybuis.com</a></li>
-            <li>Telefon: +49 123 456 7890</li>
-            <li>Adresse: Kufsteiner Straße 25, 10825 Berlin</li>
-        </ul>
-        <p>Alternativ können Sie das untenstehende Formular ausfüllen, um uns direkt zu kontaktieren.</p>
-        <form onsubmit="return showNotification()">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="message">Nachricht:</label><br>
-            <textarea id="message" name="message" rows="4" required></textarea><br><br>
-            <button type="submit">Absenden</button>
-        </form>
+        <section class="contact-info">
+            <h2>Unsere Kontaktdaten</h2>
+            <div class="contact-box">
+                <p><strong>Email:</strong> <a href="mailto:kontakt@easybuis.com">info@mindmash.com</a></p>
+                <p><strong>Telefon:</strong> +49 123 456 7890</p>
+                <p><strong>Adresse:</strong> Kufsteiner Straße 25, 10825 Berlin</p>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Schreiben Sie uns</h2>
+            <p>Füllen Sie das Formular aus und wir melden uns so schnell wie möglich.</p>
+            <form onsubmit="return showNotification()">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Nachricht:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Absenden</button>
+            </form>
+        </section>
     </main>
+
     <footer>
-            <a href="/">Zurück zur Startseite</a>
+        <a href="/">Zurück zur Startseite</a>
     </footer>
 
-    <!-- JavaScript akript für die Push-Up Benachrichtigung -->
     <script>
         function showNotification() {
-            // Erstellen der Benachrichtigung
             const notification = document.createElement('div');
-            const countdown = document.createElement('span');
-            let timeLeft = 3; // Countdown in Sekunden
-
             notification.innerText = "Formular wurde erfolgreich abgesendet!";
-            notification.style.position = 'fixed';
-            notification.style.top = '50%';
-            notification.style.left = '50%';
-            notification.style.transform = 'translate(-50%, -50%)';
-            notification.style.backgroundColor = '#5cb85c';
-            notification.style.color = 'white';
-            notification.style.padding = '20px';
-            notification.style.borderRadius = '10px';
-            notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
-            notification.style.zIndex = '1000';
-            
-            // Countdown-Text initialisieren
-            countdown.innerText = ` (${timeLeft})`;
-            notification.appendChild(countdown);
+            notification.classList.add("notification");
 
-            // Benachrichtigung zum Body hinzufügen
             document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.classList.add("fade-out");
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
 
-            // Countdown aktualisieren
-            const countdownInterval = setInterval(() => {
-                timeLeft -= 1;
-                countdown.innerText = ` (${timeLeft})`;
-
-                // Countdown beenden und Benachrichtigung entfernen
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval); 
-                    notification.remove();
-                }
-            }, 1000);
-
-            // Standardformularverhalten verhindern
             return false;
         }
     </script>
