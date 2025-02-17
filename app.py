@@ -112,3 +112,17 @@ def marketing():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/entwicklung')
+def entwicklung():
+    return render_template('entwicklung.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route('/design')
+def design():
+    return render_template('design.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
