@@ -124,5 +124,9 @@ if __name__ == '__main__':
 def design():
     return render_template('design.html')
 
+@app.route('/Produkte')
+def Produkte():
+    return render_template('Produkte.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
