@@ -55,13 +55,13 @@
 
         /* Slogan Section */
         .slogan {
-            background: url('https://source.unsplash.com/1600x900/?business,technology') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: rgb(0, 0, 0);
             text-align: center;
+            padding: 5;
         }
 
         .slogan h1 {
@@ -71,9 +71,33 @@
         }
 
         .slogan p {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
             font-size: 1.5rem;
             max-width: 700px;
             margin: 0 auto;
+        }
+
+        .slogan::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/static/images/Hintergrund-MindMesh.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .slogan-content {
+            position: relative;
+            z-index: 2; /* Text bleibt klar sichtbar */
+            color: black; /* Schriftfarbe auf schwarz setzen */
+         max-width: 700px;
         }
 
         /* Introduction Section */
@@ -166,6 +190,8 @@
 
     <!-- Slogan Section -->
     <section class="slogan">
+        <div class="background-overlay"></div>
+        <div class="slogan-content"></div>
         <div>
             <h1>Die Zukunft deines Business beginnt hier</h1>
             <p>Innovative Lösungen für Unternehmen von morgen – maßgeschneiderte Ideen und Strategien, die dein Wachstum beschleunigen.</p>
